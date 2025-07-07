@@ -21,8 +21,8 @@ app.use(express.json())
 
 // Routes
 app.use('/api/auth', authRoutes)
-app.use('/api/projects', projectRoutes, requireAuth)
-app.use('/api/issues', issueRoutes, requireAuth)
+app.use('/api/projects', requireAuth, projectRoutes)
+app.use('/api/issues', requireAuth, issueRoutes)
 
 // Root test route
 app.get('/', (_req, res) => {

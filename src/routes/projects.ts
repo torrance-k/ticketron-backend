@@ -6,8 +6,11 @@ import {
   updateProject,
   deleteProject
 } from '../controllers/projectController'
+import { requireAuth } from '../middleware/authMiddleware'
 
 const router = Router()
+
+router.use(requireAuth)
 
 router.get('/', getAllProjects)
 router.post('/', createProject)

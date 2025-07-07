@@ -27,7 +27,7 @@ export const createProject = async (req: Request, res: Response) => {
   const userId = req.user?._id
 
   try {
-    const newProject = new Project({ name: req.body, owner: userId, members: [userId] })
+    const newProject = new Project({ name: req.body.name, owner: userId, members: [userId] })
     await newProject.save()
     res.status(201).json(newProject)
   } catch (err) {
