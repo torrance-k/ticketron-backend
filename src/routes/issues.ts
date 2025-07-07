@@ -6,8 +6,11 @@ import {
   updateIssue,
   deleteIssue
 } from '../controllers/issueController'
+import { requireAuth } from '../middleware/authMiddleware'
 
 const router = Router()
+
+router.use(requireAuth)
 
 router.get('/project/:projectId', getAllIssuesForProject)
 router.post('/project/:projectId', createIssue)
