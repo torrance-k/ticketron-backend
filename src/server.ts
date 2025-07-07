@@ -7,6 +7,7 @@ import cors from 'cors'
 import authRoutes from './routes/auth'
 import projectRoutes from './routes/projects'
 import issueRoutes from './routes/issues'
+import { requireAuth } from './middleware/authMiddleware'
 
 dotenv.config()
 
@@ -20,8 +21,8 @@ app.use(express.json())
 
 // Routes
 app.use('/api/auth', authRoutes)
-app.use('/api/projects', projectRoutes)
-app.use('/api/issues', issueRoutes)
+app.use('/api/projects', projectRoutes, requireAuth)
+app.use('/api/issues', issueRoutes, requireAuth)
 
 // Root test route
 app.get('/', (_req, res) => {
